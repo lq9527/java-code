@@ -13,7 +13,8 @@ apply plugin: 'jacoco'
 
 //Java源码路径
 def coverageSourceDirs = [
-        '../app/src/main/java'
+        '../app/src/main/java',
+        '../app/src/main/kotlin'
 ]
 
 //Jacoco 版本
@@ -40,12 +41,15 @@ task jacocoTestReport(type: JacocoReport) {
                        '**/*$ViewInjector*.class'
             ])
     sourceDirectories = files(coverageSourceDirs)
+
+
     executionData = files("$buildDir/outputs/code-coverage/coverage.ec")
 
     doFirst {
 //        new File("$buildDir/intermediates/classes/").eachFileRecurse { file ->
         new File("$buildDir/intermediates/javac/debug/compileDebugJavaWithJavac/classes/").eachFileRecurse { file ->
             if (file.name.contains('$$')) {
+                printf("jacoco replace \$")
                 file.renameTo(file.path.replace('$$', '$'))
             }
         }

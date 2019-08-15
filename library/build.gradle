@@ -1,11 +1,30 @@
 apply plugin: 'com.android.library'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/lq/Desktop/chinahr')
+            storePassword '123456'
+            keyPassword '123456'
+            keyAlias = 'chinahr'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file('/Users/lq/Desktop/chinahr')
+            storePassword '123456'
+            keyPassword '123456'
+            keyAlias = 'chinahr'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
     defaultConfig {
         minSdkVersion 16
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

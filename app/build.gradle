@@ -1,25 +1,66 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply from: 'jacoco.gradle'
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "jaygoo.jacocotest"
         minSdkVersion 16
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+//    sourceSets {
+//        main {
+//            manifest.srcFile 'AndroidManifest.xml'
+//            java.srcDirs = ['src', 'kotlin']
+//            resources.srcDirs = ['src']
+//            aidl.srcDirs = ['src']
+//            renderscript.srcDirs = ['src']
+//            res.srcDirs = ['res']
+//            assets.srcDirs = ['assets']
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
             /**打开覆盖率统计开关*/
             testCoverageEnabled = true
+        }
+        debug {
+            minifyEnabled false
+            /**打开覆盖率统计开关*/
+            testCoverageEnabled = true
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('/Users/lq/Desktop/chinahr')
+            storePassword '123456'
+            keyPassword '123456'
+            keyAlias = 'chinahr'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        release {
+            storeFile file('/Users/lq/Desktop/chinahr')
+            storePassword '123456'
+            keyPassword '123456'
+            keyAlias = 'chinahr'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 }
@@ -29,8 +70,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.karumi:dexter:4.1.0'
     testCompile 'junit:junit:4.12'
     compile project(path: ':library')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

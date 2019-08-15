@@ -1,7 +1,9 @@
 package jaygoo.jacocotest;
 
 import android.Manifest;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.List;
 import jaygoo.jacocohelper.JacocoHelper;
+import jaygoo.jacocotest.kotlinp.JobLogger;
 
 
 /**
@@ -93,6 +96,8 @@ public class TestActivity extends AppCompatActivity {
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (report.areAllPermissionsGranted()){
                             Toast.makeText(getApplication(),"权限获取成功！",Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(getApplication(),"权限获取失败了呀！",Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -103,6 +108,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void function1(){
+        JobLogger.INSTANCE.d("hello");
         Toast.makeText(getApplication(),"方法一",Toast.LENGTH_SHORT).show();
     }
 
