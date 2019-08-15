@@ -34,14 +34,19 @@ task jacocoTestReport(type: JacocoReport) {
         html.enabled = true
     }
 
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*',
-                      '**/*$InjectAdapter.class',
-                      '**/*$ModuleAdapter.class',
-                      '**/*$ViewInjector*.class']
+//    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*',
+//                      '**/*$InjectAdapter.class',
+//                      '**/*$ModuleAdapter.class',
+//                      '**/*$ViewInjector*.class']
+
+    def fileFilter = ['**/R*.class',
+                       '**/*$InjectAdapter.class',
+                       '**/*$ModuleAdapter.class',
+                       '**/*$ViewInjector*.class']
 
     def debugTree = fileTree(dir: "./build/intermediates/javac/debug/compileDebugJavaWithJavac/classes", excludes: fileFilter)
     def kotlinDebugTree = fileTree(dir: "./build/tmp/kotlin-classes/debug", excludes: fileFilter)
-    classDirectories = files([debugTree], [kotlinDebugTree])
+    classDirectories = files([debugTree] + [kotlinDebugTree])
 
 //    classDirectories = fileTree(
 //            dir: './build/intermediates/javac/debug',
