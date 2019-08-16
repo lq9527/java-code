@@ -27,6 +27,7 @@ jacoco {
 
 //生成报告task
 task jacocoTestReport(type: JacocoReport) {
+    println(">>> jacoco jacocoTestReport")
     group = "JacocoReport"
     description = "Generate Jacoco coverage reports after running tests."
     reports {
@@ -80,6 +81,7 @@ task jacocoTestReport(type: JacocoReport) {
 
 //初始化Jacoco Task
 task jacocoInit(){
+    println(">>> jacoco init")
     group = "JacocoReport"
     doFirst{
         File file = new File("$buildDir/outputs/code-coverage/")
