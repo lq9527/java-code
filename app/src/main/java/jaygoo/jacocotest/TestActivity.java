@@ -137,4 +137,8 @@ public class TestActivity extends AppCompatActivity {
     private void function5() {
         Toast.makeText(getApplication(),"方法无",Toast.LENGTH_SHORT).show();
     }
+
+    private void function6() {
+        Toast.makeText(getApplication(),"方法无",Toast.LENGTH_SHORT).show();
+    }
 }
