@@ -15,6 +15,8 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.List;
+import java.util.Random;
+
 import jaygoo.jacocohelper.JacocoHelper;
 import jaygoo.jacocotest.kotlinp.JobLogger;
 
@@ -122,6 +124,13 @@ public class TestActivity extends AppCompatActivity {
 
     private void function4() {
         Toast.makeText(getApplication(),"方法四",Toast.LENGTH_SHORT).show();
+
+        if (new Random().nextBoolean()) {
+            System.out.println("jacoco branch -if");
+        } else {
+            System.out.println("jacoco branch -else");
+            function5();
+        }
     }
 
 
