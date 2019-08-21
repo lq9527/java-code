@@ -18,6 +18,7 @@ def coverageSourceDirs = [
         '../app/src/main/java/jaygoo/jacocotest/kotlinp'
 ]
 
+//TODO  see:implementation 'org.jacoco:org.jacoco.core:0.7.9'
 //Jacoco 版本
 jacoco {
     toolVersion = "0.7.9"

@@ -48,6 +48,7 @@ public class TestActivity extends AppCompatActivity {
         JacocoHelper.init(PROJECT_PATH,true);
         initPermissions();
         initView();
+
     }
 
     private void initView() {
